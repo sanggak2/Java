@@ -1,0 +1,28 @@
+public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        int P[] = new int[2];   //시작위치(좌표)
+        int count = 0;
+
+        System.out.println("  a  b  c  d  e  f  g  h   (체스판)\n1\n2\n3\n4\n5\n6\n7\n8");
+        System.out.println("위치를 정해주세요.");
+        String point = scan.next();
+
+        P[0] = point.charAt(0) - ('a'-1);   //시작위치 배열에 넣기
+        P[1] = point.charAt(1) - '0';
+
+        System.out.println(Count(P)); //결과값*/
+    }
+    static int Count(int P[]){
+        int X[] = {P[0]+2, P[0]+2, P[0]-2, P[0]-2, P[0]+1, P[0]+1, P[0]-1, P[0]-1};
+        int Y[] = {P[1]+1, P[1]-1, P[1]+1, P[1]-1, P[1]+2, P[1]-2, P[1]+2, P[1]-2};
+        int count = 0;
+        for(int i = 0; i < 8; i++){
+
+            if(X[i] > 8) {continue;}
+            else if(Y[i] > 8) {continue;}
+            else if(X[i] < 1) {continue;}
+            else if(Y[i] < 1) {continue;}
+            else{count++;}
+        }
+        return count;
+    }

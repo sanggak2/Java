@@ -1,0 +1,2 @@
+스택, 큐, 힙, 덱 : https://iambeginnerdeveloper.tistory.com/152
+https://cotak.tistory.com/69

@@ -1,0 +1,13 @@
+public static void main(String[] args) {
+        int price;
+        int output = 0, money = 1000, div = 2;
+        Scanner scan = new Scanner(System.in);
+        price = scan.nextInt();
+        while(price != 0){
+            money /= div;
+            output += price/money;
+            price %= money;
+            div = div==5 ? 2:5;
+        }
+        System.out.println(output);
+    }

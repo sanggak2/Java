@@ -1,0 +1,51 @@
+public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        int num = input.nextInt();
+
+        System.out.println(IsContain(num));
+    }
+
+    static int IsContain(int num){
+        int time[] = {0, 0, 0, 0, 0};   //시간 => 배열
+        int count = 0;    //카운트
+
+        while(time[0] != (num+1)){   //N시 59분 59초까지라서 (N+1)
+            time[4]++;   //1초씩 더하기
+
+            TimeUp(time);   //시 분 초 자리
+            count += SkipBlock(num, time); //3시, 30분, 3분, 30초 블록으로 올리기
+
+            if(time[4] == 3)   //초단위 3이면 카운트 올리기
+            { count++; System.out.println(Arrays.toString(time));}
+        }
+        if(num == 2 && time[0] == 3){ count--; }   //2시 59분 59초까지면 3시까지 카운트됨 그래서 (카운트 - 1)
+
+        return count;
+    }
+    static void TimeSet(int num, int time[]){
+        for(int i = 4; i > num; i--){
+            time[i] = 0;
+        }
+    }//시 분 초 자리 올릴때 되면 뒤에 수들 0으로 초기화
+    static void TimeUp(int time[]){
+        if(time[4] == 10){TimeSet(3, time); time[3] += 1;}
+        else if(time[3] == 6){TimeSet(2, time); time[2] += 1;}
+        else if(time[2] == 10){TimeSet(1, time); time[1] += 1;}
+        else if(time[1] == 6){TimeSet(0, time); time[0] += 1;}
+    }//시 분 초 자리 올리기
+    static int SkipBlock(int num, int time[]){
+        if(num != 2 && time[0] == 3)
+        { TimeSet(0, time); time[0] = 4; return 3600;}
+
+        else if(time[1] == 3)
+        { TimeSet(1, time); time[1] += 1; return 600;}
+
+        else if(time[2] == 3)
+        {TimeSet(2, time); time[2] += 1; return 60;}
+
+        else if(time[3] == 3)
+        {TimeSet(3, time); time[3] += 1; return 10;}
+
+        return 0;
+    }//3시, 30분, 3분, 30초 부분 카운트 더해서 스킵하기
+}

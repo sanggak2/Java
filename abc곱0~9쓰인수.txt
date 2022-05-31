@@ -1,0 +1,35 @@
+/*
+A, B, C 입력값
+입력값 범위 X
+A*B*C 결과값
+0~9까지 쓰인 갯수
+
+ex) A*B*C = 123333
+= 0114000000
+   0123456789
+*/
+
+Scanner scan = new Scanner(System.in);
+		//0~9
+		int[] Num = new int[10];
+		//계산
+		int A = scan.nextInt();
+		int B = scan.nextInt();
+		int C = scan.nextInt();
+		int result = A*B*C;
+		
+		//문자열 변환후 배열생성
+		String sr = String.valueOf(result);
+		
+		//자르기
+		char str;
+		int num;
+		for(int i = 0; i < sr.length(); i++) {
+			str = sr.charAt(i);
+			num = Integer.parseInt(Character.toString(str));
+			Num[num] += 1;
+		}
+		System.out.println(Arrays.toString(Num));
+		for(int i = 0; i < 10; i++) {
+			System.out.print(Num[i]);
+		}

@@ -1,0 +1,96 @@
+//11장 연습문제 풀기
+		//프로그램 시작시 note.txt의 파일목록ArrayList에 저장
+		//노트 1.파일리스트, 2.파일작성, 3.종료프로그램 만들고
+		//파일작성시 파일명 ArrayList에 추가후 정렬
+		//프로그램 종료시 ArrayList note.txt에 저장
+
+		//note.txt ArrayList에 저장
+		List<String> file = new ArrayList<String>();
+		FileInputStream note = null;
+		try {
+			note = new FileInputStream("src/note.txt");
+		    Scanner finput = new Scanner(note);
+		    String fname;
+		    
+			while(true) {
+				if(!finput.hasNextLine()) {   //다음라인 파일명x => 종료
+					finput.close();
+					break;
+				}
+				
+				fname = finput.nextLine();    //리스트에 파일명 추가
+				file.add(fname);
+			}
+		}catch(FileNotFoundException e) {
+			System.out.println("YOU DIE(유다희)");
+			System.exit(10);
+		}
+		
+		//옵션 선택
+		System.out.print("1.파일 리스트\n2.파일 작성\n3.종료\n");
+		Scanner option = new Scanner(System.in);
+		boolean ok = true;
+		
+		do {
+			ok = true;
+			int O = option.nextInt();
+		switch(O) {
+			case 1:
+				Collections.sort(file);
+				System.out.println(file);
+				System.exit(0);
+				break;
+			case 2:
+				Writing(file, note);
+				break;
+			case 3:
+				System.exit(0);
+				break;
+				default:
+					System.out.println("잘못된 입력이에요.");
+					ok = false;
+				break;
+			}
+		}while(!ok);
+		option.close();
+	}
+	static void Writing(List<String> file, FileInputStream note) {
+		//파일 입력 위치 받기
+		System.out.println("파일의 이름을 정해주세요.");
+		Scanner input = new Scanner(System.in);
+		String name = input.nextLine();
+		
+		FileWriter writer = null;
+		try {
+			writer = new FileWriter("src/"+name+".txt");
+			System.out.println("내용을 입력해주세요.");
+			String in;
+			while(true) {
+				in = input.nextLine();
+				if(in == "") {       //엔터두번 종료
+					input.close();
+					break;
+				}
+				
+				writer.write(in);
+				writer.write("\n");
+			}
+			writer.close();
+			input.close();
+			
+			//파일이름 note.txt에 넣기
+			writer = new FileWriter("src/note.txt", true);
+			if(!file.contains(name)) {
+				writer.write("\n");
+				writer.write(name);
+				writer.close();
+				file.add(name);
+			}
+		}catch(IOException e) {
+			System.out.println("YOU DIE(유다희)");
+			System.exit(10);
+		}
+		//note.txt에 정렬후 리스트 출력
+		Collections.sort(file);
+		System.out.println(file);
+	}
