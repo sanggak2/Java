@@ -1,0 +1,13 @@
+import java.util.*;
+
+public class Practice {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        int A = scan.nextInt();
+        int B = scan.nextInt();
+        int C = scan.nextInt();
+        C -= 1;
+        int o = A + (B*C);
+        System.out.print(o);
+    }
+}

@@ -1,0 +1,12 @@
+import java.util.*;
+
+public class Practice {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        long A = scan.nextLong();
+        if(A > 0){System.out.println("plus");}
+        else{System.out.println("minus");}
+        if(A % 2 == 0){System.out.println("even");}
+        else{System.out.println("odd");}
+    }
+}

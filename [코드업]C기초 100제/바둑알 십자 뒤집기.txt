@@ -1,0 +1,22 @@
+import java.util.*;
+
+public class Practice {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        int B[][] = new int[20][20];
+
+        for(int i = 1; i < 20; i++){for(int j = 1; j < 20; j++) {
+            B[i][j] = scan.nextInt();
+        }}
+        int A = scan.nextInt();
+        for(int i = 0;i < A;i++){
+            int x = scan.nextInt();
+            for(int j = 1; j < 20; j++){B[x][j] = B[x][j] == 1 ? 0 : 1;}
+            int y = scan.nextInt();
+            for(int j = 1; j < 20; j++){B[j][y] = B[j][y] == 1 ? 0 : 1;}
+        }
+        for(int i = 1; i < 20; i++){for(int j = 1; j < 20; j++) {
+            System.out.print(B[i][j] + " ");
+        }System.out.println();}
+    }
+}

@@ -1,0 +1,10 @@
+import java.util.*;
+
+public class Practice {
+    public static void main(String[] args){
+        Scanner scan = new Scanner(System.in);
+        String A = scan.nextLine();
+        String arr[] = A.split(":");
+        System.out.print(Integer.parseInt(arr[1]));
+    }
+}

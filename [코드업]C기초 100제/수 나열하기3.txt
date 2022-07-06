@@ -1,0 +1,16 @@
+import java.util.*;
+
+public class Practice {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        int A = scan.nextInt();
+        int B = scan.nextInt();
+        int C = scan.nextInt();
+        int D = scan.nextInt();
+        long out = A;
+        for(int i = 1; i < D; i++){
+            out = out * B + C;
+        }
+        System.out.println(out);
+    }
+}

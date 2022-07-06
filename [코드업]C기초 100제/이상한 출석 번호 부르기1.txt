@@ -1,0 +1,16 @@
+import java.util.*;
+
+public class Practice {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        int arr[] = new int[23];
+        int A = scan.nextInt();
+        for(int i = 0; i < A; i++){
+            int a = scan.nextInt();
+            arr[a-1] += 1;
+        }
+        for(int i = 0; i < 23; i++){
+            System.out.print(arr[i]+" ");
+        }
+    }
+}

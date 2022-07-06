@@ -1,0 +1,16 @@
+import java.util.*;
+
+public class Practice {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        long A = scan.nextLong();
+        long B = scan.nextLong();
+        long C = scan.nextLong();
+        if(A % 2 == 0){System.out.println("even");}
+        else{System.out.println("odd");}
+        if(B % 2 == 0){System.out.println("even");}
+        else{System.out.println("odd");}
+        if(C % 2 == 0){System.out.println("even");}
+        else{System.out.println("odd");}
+    }
+}

@@ -1,0 +1,14 @@
+import java.util.*;
+
+public class Practice {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        int h = scan.nextInt();
+        int b = scan.nextInt();
+        int c = scan.nextInt();
+        long s = scan.nextInt();
+        long j = h*b*c*s;
+        double i = j/(double)8388608;
+        System.out.format("%.1f MB", i);
+    }
+}

@@ -1,0 +1,11 @@
+import java.util.*;
+
+public class Practice {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        long A = scan.nextLong();
+        long B = scan.nextLong();
+        A = A>B ? A : B;
+        System.out.print(A);
+    }
+}

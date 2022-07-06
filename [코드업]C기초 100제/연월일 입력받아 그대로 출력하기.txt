@@ -1,0 +1,13 @@
+import java.util.*;
+
+public class Practice {
+    public static void main(String[] args){
+        Scanner scan = new Scanner(System.in);
+        String A = scan.nextLine();
+        String T[] = A.split("\\.");
+        String y = T[0];
+        String m = T[1];
+        String d = T[2];
+        System.out.format("%04d.%02d.%02d", Integer.parseInt(y), Integer.parseInt(m), Integer.parseInt(d));
+    }
+}

@@ -1,0 +1,33 @@
+import java.util.*;
+
+public class Main {
+    static int h, k;
+    public static void main(String[] args){
+        Scanner scan = new Scanner(System.in);
+        h = scan.nextInt();
+        k = scan.nextInt();
+        String dir = scan.next();
+
+        boolean d;
+        if(dir.equals("L")){
+            d = true;
+            parellelogram(d);
+        }else if(dir.equals("R")){
+            d = false;
+            parellelogram(d);
+        }
+    }
+    //true : left, true : right
+    static void parellelogram(boolean dir){
+        int blank = dir ? 0 : h-1;
+        for(int i = 0; i < h; i++){
+            for(int j = 0; j < blank; j++){
+                System.out.print(" "); }
+            blank = dir ? blank+1 : blank-1;
+
+            for(int j = 0; j < k; j++){
+                System.out.print("*"); }
+            System.out.println();
+        }
+    }
+}

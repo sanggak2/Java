@@ -1,0 +1,31 @@
+import java.util.*;
+
+public class Practice {
+    static int x = 1, y = 1;
+
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        int A[][] = new int[10][10];
+        for(int i = 0; i < 10; i++){for(int j = 0; j < 10; j++){
+            A[i][j] = scan.nextInt();
+        }}
+        if(A[1][1] == 2){A[1][1] = 9; pr(A); System.exit(0);}
+        A[1][1] = 9;
+        while(A[y][x] != 2){
+            if(A[y][x+1] == 1 &&  A[y+1][x] == 1){break;}
+            move(A);
+        }
+        A[y][x] = 9;
+        pr(A);
+    }
+    static void move(int A[][]){
+        if(A[y][x + 1] == 1){y += 1;}
+        else{x += 1;}
+        A[y][x] = A[y][x] == 2 ? 2 : 9;
+    }
+    static void pr(int A[][]){
+        for(int i = 0; i < 10; i++){for(int j = 0; j < 10; j++){
+            System.out.print(A[i][j] + " ");
+        }System.out.println();}
+    }
+}

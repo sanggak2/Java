@@ -1,0 +1,14 @@
+import java.util.*;
+
+public class Practice {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        int A = scan.nextInt();
+        int B = 23;
+        for(int i = 1; i <= A; i++){
+            int a = scan.nextInt();
+            B = a < B ? a : B;
+        }
+        System.out.print(B);
+    }
+}

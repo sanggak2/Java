@@ -1,0 +1,25 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) throws IOException{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String NnC = br.readLine();
+        StringTokenizer st = new StringTokenizer(NnC, " ");
+        int n = Integer.parseInt(st.nextToken());
+        int c = Integer.parseInt(st.nextToken());
+
+        int tallArr[] = new int[n];
+        String tallLine = br.readLine();
+        StringTokenizer tall = new StringTokenizer(tallLine, " ");
+        for(int i = 0; i < n; i++){
+            tallArr[i] = Integer.parseInt(tall.nextToken());
+        }
+        Arrays.sort(tallArr);
+
+        for(int i = 0; i < n; i++){
+            if(i != 0 && i % c == 0){System.out.println();}
+            System.out.print(tallArr[i] + " ");
+        }
+    }
+}

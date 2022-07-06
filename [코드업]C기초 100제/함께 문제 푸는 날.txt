@@ -1,0 +1,16 @@
+import java.util.*;
+
+public class Practice {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        List<Integer> lis = new ArrayList<>();
+        int A = scan.nextInt();
+        int B = scan.nextInt();
+        int C = scan.nextInt();
+        int day = 1;
+        while(day%A!=0 || day%B!=0 || day%C!=0){
+            day++;
+        }
+        System.out.println(day);
+    }
+}

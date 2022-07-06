@@ -1,0 +1,10 @@
+import java.util.*;
+
+public class Practice {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        long A = scan.nextLong();
+        int a = A == 0 ? 1 : 0;
+        System.out.print(a);
+    }
+}

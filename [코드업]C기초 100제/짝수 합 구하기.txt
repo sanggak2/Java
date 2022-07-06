@@ -1,0 +1,13 @@
+import java.util.*;
+
+public class Practice {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        int A = scan.nextInt();
+        int O = 0;
+        for(int i = 2; i <= A; i += 2){
+            O += i;
+        }
+        System.out.println(O);
+    }
+}
