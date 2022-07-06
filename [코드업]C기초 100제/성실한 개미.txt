@@ -1,5 +1,5 @@
 import java.util.*;
-
+BBB
 public class Practice {
     static int x = 1, y = 1;
 
