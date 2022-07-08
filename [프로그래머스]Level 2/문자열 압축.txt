@@ -1,0 +1,57 @@
+import java.io.*;
+import java.util.*;
+
+class Solution {
+    public int solution(String s){
+        if(s.length() == 1){return 1;} //문자열 길이 1일때 처리
+
+        int answer = 1000;   //최소 문자열 길이를 저장할 값.
+        for(int l = 1; l <= s.length(); l++){ //l = 압축할 문자열 단위
+            
+            //압축한 문자열, 전에 압축한 문자열 길이 비교
+            answer = Math.min(div(s, l), answer); 
+        }
+
+        return answer;
+    }
+
+    static int div(String index, int l){
+        int w = 1;  //압축된 횟수
+        String indexC = index;  //문자열 복사
+        List<String> list = new ArrayList<>();
+
+        for(int i = 0; i < index.length(); i += l){
+            String a = index.substring(i, i+l);      //압축단위 만큼 쪼갠 문자열 1
+            //b 문자열을 지정할 수 없을때 벗어남.
+            if(i + (2*l) > index.length()){ if(w > 1){list.add(w+a); indexC = indexC.replaceFirst(w+a, "");} break;}  //반복문 종료시 압축이 된 상태일 경우 list에 넣고 벗어남.
+            
+            String b = index.substring(i+l, i+(2*l));//압축단위 만큼 쪼갠 문자열 2
+
+            //a와 b가 같을때
+            if(a.equals(b)){
+                String s = w >= 2 ? w+a : a;    //문자열 중첩이 한번도 안 일어났을때, 한번 이상 일어났을때 고려해서 없앨 문자열 지정
+                w++;    //압축횟수 증가
+                indexC = indexC.replaceFirst(s, Integer.toString(w));   //없앨 문자열 제거 후, 압축횟수로 교체
+            }
+
+            //a와 b가 다를때
+            else{
+                //만약 압축됬었다면 압축된 문자열 list에 넣고 삭제
+                if(w > 1){
+                    String s = w+a;
+                    list.add(s);
+                    indexC = indexC.replaceFirst(s, "");
+                }
+                w = 1; //압축횟수 초기화
+            }
+        }
+        String A = "";
+        for(int i = 0; i < list.size(); i++){ //리스트에 있던 압축문자열 합치기
+            A += list.get(i);
+        }
+
+        return A.length()+indexC.length(); //압축된 문자열 길이 리턴.
+    }
+}
+
+아쉬운점 : 각각 압축된 문자열을 list에 저장해서 list를 합한 후 길이를 구하지말고 차라리 각각 압축된 문자열 길이를 결과값에 숫자를 더해서 마지막에 더한 값을 리턴할걸 그랬다. (다음에 해보자)
